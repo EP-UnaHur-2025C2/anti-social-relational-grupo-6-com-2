@@ -1,7 +1,6 @@
 const { Router } = require('express')
-/*Agregar los controladores y validaciones necesarios. Ej:
-const serieController = require('../controllers/serieController')
-const validarIdParams = require('../middlewares/validateSerie')*/
+const tagController = require('../controllers/tag_controller')
+//const validarIdParams = require('../middlewares/validateSerie')
 const router = Router()
 
 // CRUD de tags
