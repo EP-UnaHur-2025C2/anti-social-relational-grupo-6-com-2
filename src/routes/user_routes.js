@@ -13,4 +13,10 @@ router.post("/", userController.crearUser);
 router.put("/:id", userController.actualizarUser);
 router.delete("/:id", userController.borrarUser);
 
-export default router;
+// Posts del usuario
+router.get("/:id/posts", userController.obtenerPostsDeUser);
+
+// Comments del usuario
+router.get("/:id/comments", userController.obtenerCommentsDeUser);
+
+module.exports = router;
