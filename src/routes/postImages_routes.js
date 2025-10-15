@@ -6,9 +6,9 @@ const router = Router()
 
 // CRUD de postImages
 router.get("/", postImagesController.obtenerTodosLosPostImages);
-router.get("/:id", postImagesController.obtenerPostImages);
+router.get("/:id", postImagesController.obtenerPostImagesById);
 router.post("/", postImagesController.crearPostImages);
-router.put("/:id", postImagesController.actualizarPostImages);
-router.delete("/:id", postImagesController.borrarPostImages);
+//router.put("/:id", postImagesController.actualizarPostImagesById);
+//router.delete("/:id", postImagesController.borrarPostImagesById);
 
 module.exports = router;

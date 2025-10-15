@@ -8,15 +8,16 @@ const router = Router()
 
 // CRUD de usuarios
 router.get("/", userController.obtenerUsers);
-router.get("/:id", userController.obtenerUser);
+router.get("/:nickName", userController.obtenerUserByNickName);
 router.post("/", userController.crearUser);
-router.put("/:id", userController.actualizarUser);
-router.delete("/:id", userController.borrarUser);
+router.put("/:nickName", userController.actualizarUserByNickName);
+router.delete("/:nickName", userController.borrarUserByNickName);
 
+//CRUDS de relaciones
 // Posts del usuario
-router.get("/:id/posts", userController.obtenerPostsDeUser);
+router.get("/:nickName/posts", userController.obtenerPostsDeUserByNickName);
 
 // Comments del usuario
-router.get("/:id/comments", userController.obtenerCommentsDeUser);
+router.get("/:nickName/comments", userController.obtenerCommentsDeUserByNickName);
 
 module.exports = router;

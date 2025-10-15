@@ -9,23 +9,24 @@ const router = Router()
 
 // CRUD de posts
 router.get('/', postController.obtenerPosts);
-router.get('/:id', postController.obtenerPost);
+router.get('/:id', postController.obtenerPostById);
 router.post('/', postController.crearPost);
-router.put('/:id', postController.actualizarPost);
-router.delete('/:id', postController.borrarPost);
+router.put('/:id', postController.actualizarPostById);
+router.delete('/:id', postController.borrarPostById);
 
+//CRUDS de relaciones
 // Imágenes de un post
-router.get("/:id_post/images", postController.obtenerImagenesDePost);
-router.post("/:id_post/images", postController.agregarImagenAPost);
-router.delete("/:id_post/images/:id_postImages", postController.eliminarImagenDePost);
+router.get("/:id_post/images", postController.obtenerImagenesDeIdPost);
+router.post("/:id_post/images", postController.agregarUnaImagenAIdPost);
+router.delete("/:id_post/images/:id_postImages", postController.eliminarUnaImagenDeIdPost);
 
 // Tags de un post (N a N)
-router.get("/:id_post/tags", postController.obtenerTagsDePost);
-router.post("/:id_post/tags/:id_tag", postController.agregarTagAPost);
-router.delete("/:id_post/tags/:id_tag", postController.eliminarTagDePost);
+router.get("/:id_post/tags", postController.obtenerTagsDeIdPost);
+router.post("/:id_post/tags/:id_tag", postController.agregarUnTagAIdPost);
+router.delete("/:id_post/tags/:id_tag", postController.eliminarTagDeIdPost);
 
 // Comments de un post
-router.get("/:id_post/comments", postController.obtenerCommentsDePost);
-router.post("/:id_post/comments", postController.crearCommentEnPost);
+router.get("/:id_post/comments", postController.obtenerCommentsDeIdPost);
+router.post("/:id_post/comments", postController.crearCommentEnIdPost);
 
 module.exports = router;
