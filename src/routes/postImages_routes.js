@@ -5,7 +5,7 @@ const validarIdParams = require('../middlewares/validateSerie')*/
 const router = Router()
 
 // CRUD de postImages
-router.get("/", postImagesController.obtenerTodosLosPostImages);
+router.get("/", postImagesController.obtenerPostImages);
 router.get("/:id", postImagesController.obtenerPostImagesById);
 router.post("/", postImagesController.crearPostImages);
 //router.put("/:id", postImagesController.actualizarPostImagesById);
