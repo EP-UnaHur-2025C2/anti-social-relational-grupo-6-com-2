@@ -2,9 +2,8 @@
 //pero cada uno con su respectivo controlador
 
 const { Router } = require('express')
-/*Agregar los controladores y validaciones necesarios. Ej:
-const serieController = require('../controllers/serieController')
-const validarIdParams = require('../middlewares/validateSerie')*/
+const postController = require('../controllers/post_controller')
+//const validarIdParams = require('../middlewares/validateSerie')
 const router = Router()
 
 // CRUD de posts
