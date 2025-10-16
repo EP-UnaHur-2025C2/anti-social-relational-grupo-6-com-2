@@ -5,10 +5,10 @@ const router = Router()
 
 // CRUD de usuarios
 router.get("/", userController.obtenerUsers);
-router.get("/:nickName", userController.obtenerUserByNickName);
-router.post("/", userController.crearUser);
-router.put("/:nickName", userController.actualizarUserByNickName);
-router.delete("/:nickName", userController.borrarUserByNickName);
+router.get("/:nickName", validarNickNameParams, userController.obtenerUserByNickName);
+router.post("/", validarCrearUser, userController.crearUser);
+router.put("/:nickName", validarNickNameParams, userController.actualizarUserByNickName);
+router.delete("/:nickName", validarNickNameParams, userController.borrarUserByNickName);
 
 //CRUDS de relaciones
 // Posts del usuario
