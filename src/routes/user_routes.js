@@ -12,9 +12,9 @@ router.delete("/:nickName", userController.borrarUserByNickName);
 
 //CRUDS de relaciones
 // Posts del usuario
-router.get("/:nickName/posts", userController.obtenerPostsDeUserByNickName);
+//router.get("/:nickName/posts", userController.obtenerPostsDeUserByNickName);
 
 // Comments del usuario
-router.get("/:nickName/comments", userController.obtenerCommentsDeUserByNickName);
+//router.get("/:nickName/comments", userController.obtenerCommentsDeUserByNickName);
 
 module.exports = router;

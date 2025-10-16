@@ -12,6 +12,6 @@ router.post("/", tagController.crearTag);
 
 //CRUDS de relaciones
 // Posts asociados a una tag
-router.get("/:id_tag/posts", tagController.obtenerPostsByIdTag);
+//router.get("/:id_tag/posts", tagController.obtenerPostsByIdTag);
 
 module.exports = router;

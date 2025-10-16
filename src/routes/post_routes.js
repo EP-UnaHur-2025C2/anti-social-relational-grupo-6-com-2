@@ -16,7 +16,7 @@ router.delete('/:id', postController.borrarPostById);
 
 //CRUDS de relaciones
 // Imágenes de un post
-router.get("/:id_post/images", postController.obtenerImagenesDeIdPost);
+/*router.get("/:id_post/images", postController.obtenerImagenesDeIdPost);
 router.post("/:id_post/images", postController.agregarUnaImagenAIdPost);
 router.delete("/:id_post/images/:id_postImages", postController.eliminarUnaImagenDeIdPost);
 
@@ -27,6 +27,6 @@ router.delete("/:id_post/tags/:id_tag", postController.eliminarTagDeIdPost);
 
 // Comments de un post
 router.get("/:id_post/comments", postController.obtenerCommentsDeIdPost);
-router.post("/:id_post/comments", postController.crearCommentEnIdPost);
+router.post("/:id_post/comments", postController.crearCommentEnIdPost);*/
 
 module.exports = router;
