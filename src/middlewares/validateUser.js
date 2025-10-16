@@ -17,7 +17,7 @@ const nickNameParamsSchema = Joi.object({
     "string.max": "El nickName no puede superar los 30 caracteres"
 })
 
-// Validacion para crear usuario
+// Validacion para crear un Usuario
 const crearUserSchema = Joi.object({
   nickName: Joi.string().alphanum().min(2).max(30).required(),
   nombre: Joi.string().min(2).max(50).trim().required(),
