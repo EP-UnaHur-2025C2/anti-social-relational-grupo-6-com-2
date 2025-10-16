@@ -1,6 +1,6 @@
 const { Router } = require('express')
 const userController = require('../controllers/user_controller')
-//const validarIdParams = require('../middlewares/validateSerie')
+const { validarNickNameParams, validarCrearUser } = require('../middlewares/validateUser')
 const router = Router()
 
 // CRUD de usuarios
@@ -12,9 +12,9 @@ router.delete("/:nickName", validarNickNameParams, userController.borrarUserByNi
 
 //CRUDS de relaciones
 // Posts del usuario
-//router.get("/:nickName/posts", userController.obtenerPostsDeUserByNickName);
+//router.get("/:nickName/posts", validarNickNameParams, userController.obtenerPostsDeUserByNickName);
 
 // Comments del usuario
-//router.get("/:nickName/comments", userController.obtenerCommentsDeUserByNickName);
+//router.get("/:nickName/comments", validarNickNameParams, userController.obtenerCommentsDeUserByNickName);
 
 module.exports = router;
