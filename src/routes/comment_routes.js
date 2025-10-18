@@ -6,9 +6,9 @@ const router = Router()
 
 // CRUD de comentarios
 router.get("/", commentController.obtenerComments);
-router.get("/:id", validarIdParams, commentController.obtenerCommentById);
+router.get("/:id_comment", validarIdParams, commentController.obtenerCommentById);
 router.post("/", validarCrearComment, commentController.crearComment);
-router.put("/:id", validarIdParams, commentController.actualizarCommentById);
-router.delete("/:id", validarIdParams, commentController.borrarCommentById);
+router.put("/:id_comment", validarIdParams, commentController.actualizarCommentById);
+router.delete("/:id_comment", validarIdParams, commentController.borrarCommentById);
 
 module.exports = router;

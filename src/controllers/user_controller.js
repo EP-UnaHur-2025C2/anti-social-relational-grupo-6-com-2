@@ -1,4 +1,4 @@
-const { User } = require('../db/models')
+const { User, Comment, Post } = require('../db/models')
 
 const obtenerUsers = async (req, res) => {
     try {
@@ -44,7 +44,7 @@ const actualizarUserByNickName = async (req, res) => {
         const user = await User.findByPk(nickName);
         if (!user) return res.status(404).json({ error: 'Usuario no encontrado' });
         await user.update({ nombre, email, contrasenia });
-        res.json(user);
+        res.status(200).json(user);
     } catch (error) {
         res.status(500).json({message: "Error al actualizar el usuario"})
     }   
@@ -62,10 +62,60 @@ const borrarUserByNickName =  async (req, res) => {
     }
 }
 
+// Controllers de las relaciones de user
+
+// Obtener todos los posts de un usuario
+const obtenerPostsDeUserByNickName = async (req, res) => {
+    try {
+        const { nickName } = req.params;
+        const user = await User.findByPk(nickName, {
+            include: [{
+                model: Post,
+                as: 'posts', // Alias del nombre de la relacion
+                attributes: ['id_post', 'descripcion', 'fecha']
+            }]
+        });
+
+        if (!user) return res.status(404).json({ message: 'Usuario no encontrado' });
+        
+        res.status(200).json(user.posts); //Devuelve los posts de dicho usuario
+    } catch (error) {
+        res.status(500).json({ message: 'Error al obtener los posts del usuario', error: error.message });
+    }
+};
+
+
+// Obtener todos los comentarios realizados por un usuario
+const obtenerCommentsDeUserByNickName = async (req, res) => {
+    try {
+        const { nickName } = req.params;
+        const user = await User.findByPk(nickName, {
+            include: [{
+                model: Comment,
+                as: 'comments', // Alias del nombre de la relacion
+                attributes: ['id_comment', 'contenido', 'fecha', 'visibilidad', 'id_post']
+            }]
+        });
+
+        if (!user) return res.status(404).json({ message: 'Usuario no encontrado' });
+        // Filtrar comentarios visibles y recientes según variable de entorno
+        /*const maxMonths = process.env.MAX_COMMENT_AGE_MONTHS || 6;
+        const fechaLimite = new Date();
+        fechaLimite.setMonth(fechaLimite.getMonth() - maxMonths);
+
+        const comentariosFiltrados = post.comments.filter(c => c.visible && new Date(c.fecha) >= fechaLimite);*/
+        res.status(200).json(user.comments);
+    } catch (error) {
+        res.status(500).json({ message: 'Error al obtener los comentarios del usuario', error: error.message });
+    }
+};
+
 module.exports = {
   obtenerUsers,
   obtenerUserByNickName,
   crearUser,
   actualizarUserByNickName,
-  borrarUserByNickName
+  borrarUserByNickName,
+  obtenerPostsDeUserByNickName,
+  obtenerCommentsDeUserByNickName
 }

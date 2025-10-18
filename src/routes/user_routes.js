@@ -10,11 +10,11 @@ router.post("/", validarCrearUser, userController.crearUser);
 router.put("/:nickName", validarNickNameParams, userController.actualizarUserByNickName);
 router.delete("/:nickName", validarNickNameParams, userController.borrarUserByNickName);
 
-//CRUDS de relaciones
+//Rutas de relaciones
 // Posts del usuario
-//router.get("/:nickName/posts", validarNickNameParams, userController.obtenerPostsDeUserByNickName);
+router.get("/:nickName/posts", validarNickNameParams, userController.obtenerPostsDeUserByNickName);
 
 // Comments del usuario
-//router.get("/:nickName/comments", validarNickNameParams, userController.obtenerCommentsDeUserByNickName);
+router.get("/:nickName/comments", validarNickNameParams, userController.obtenerCommentsDeUserByNickName);
 
 module.exports = router;

@@ -11,8 +11,8 @@ const obtenerPostImages = async (req, res) => {
 
 const obtenerPostImagesById = async (req, res) => {
     try {
-        const id = req.params.id
-        const postImage = await PostImage.findByPk(id)
+        const id_postImages = req.params.id_postImages
+        const postImage = await PostImage.findByPk(id_postImages)
         if(!postImage){
             res.status(400).json({message: "Imagen no encontrada"})
         }
@@ -37,12 +37,12 @@ const crearPostImages = async (req, res) => {
 
 const actualizarPostImagesById = async (req, res) => {
     try {
-        const { id } = req.params;
+        const { id_postImages } = req.params;
         const { url, id_post } = req.body;
-        const postImage = await PostImage.findByPk(id);
+        const postImage = await PostImage.findByPk(id_postImages);
         if (!postImage) return res.status(404).json({ error: 'Imagen no encontrada' });
         await postImage.update({ url, id_post });
-        res.json(postImage);
+        res.status(200).json(postImage);
     } catch (error) {
         res.status(500).json({message: "Error al actualizar la imagen"})
     }   
@@ -50,8 +50,8 @@ const actualizarPostImagesById = async (req, res) => {
 
 const borrarPostImagesById =  async (req, res) => {
     try {
-        const { id } = req.params;
-        const postImage = await PostImage.findByPk(id);
+        const { id_postImages } = req.params;
+        const postImage = await PostImage.findByPk(id_postImages);
         if (!postImage) return res.status(404).json({ error: 'Imagen no encontrada' });
         await postImage.destroy();
         res.status(204).send();

@@ -11,8 +11,8 @@ const obtenerComments = async (req, res) => {
 
 const obtenerCommentById = async (req, res) => {
     try {
-        const id = req.params.id
-        const comment = await Comment.findByPk(id)
+        const id_comment = req.params.id_comment
+        const comment = await Comment.findByPk(id_comment)
         if(!comment){
             res.status(400).json({message: "Comentario no encontrado"})
         }
@@ -40,12 +40,12 @@ const crearComment = async (req, res) => {
 
 const actualizarCommentById = async (req, res) => {
     try {
-        const { id } = req.params;
+        const { id_comment } = req.params;
         const { contenido, fecha, visibilidad, nickName, id_post } = req.body;
-        const comment = await Comment.findByPk(id);
+        const comment = await Comment.findByPk(id_comment);
         if (!comment) return res.status(404).json({ error: 'Comentario no encontrado' });
         await comment.update({ contenido, fecha, visibilidad, nickName, id_post });
-        res.json(comment);
+        res.status(200).json(comment);
     } catch (error) {
         res.status(500).json({message: "Error al actualizar el comentario"})
     }   
@@ -53,8 +53,8 @@ const actualizarCommentById = async (req, res) => {
 
 const borrarCommentById =  async (req, res) => {
     try {
-        const { id } = req.params;
-        const comment = await Comment.findByPk(id);
+        const { id_comment } = req.params;
+        const comment = await Comment.findByPk(id_comment);
         if (!comment) return res.status(404).json({ error: 'Comentario no encontrado' });
         await comment.destroy();
         res.status(204).send();
